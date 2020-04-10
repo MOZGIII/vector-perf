@@ -8,3 +8,7 @@ perf.data.*
 
 # vtune data dirs
 /r*hs
+
+# artifacts
+*.svg
+*.folded
