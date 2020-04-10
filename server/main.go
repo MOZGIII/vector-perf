@@ -32,7 +32,7 @@ func printStats() {
 		bytesNow := atomic.LoadUint64(&totalBytesRead)
 		requestsNow := atomic.LoadUint64(&totalRequests)
 		fmt.Printf(
-			"B: %016d (%016d) R: %08d (%08d)\n",
+			"B: %10d (%14d) R: %5d (%10d)\n",
 			bytesNow-bytesSecondAgo, bytesNow,
 			requestsNow-requestsSecondAgo, requestsNow,
 		)
