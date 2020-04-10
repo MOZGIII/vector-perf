@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+VTUNE_BIN="${VTUNE_BIN:-"vtune"}"
+
+"$VTUNE_BIN" -collect hotspots -knob sampling-mode=hw --target-process vector &
+VTUNE_PID="$!"
+
+bin/start-socat
+
+kill -2 "$VTUNE_PID"
+wait "$VTUNE_PID"

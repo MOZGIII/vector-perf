@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+
+! VECTOR_PID="$(pgrep vector)"
+if [[ -z "$VECTOR_PID" ]]; then
+  echo "Error: vector PID not found"
+  exit 1
+fi
+
+exec perf record --call-graph dwarf -p "$VECTOR_PID" bin/start-socat

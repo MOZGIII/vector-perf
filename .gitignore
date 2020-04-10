@@ -1,0 +1,6 @@
+*.log
+.env
+.envrc
+
+# vtune data dirs
+/r*hs

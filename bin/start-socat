@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+LOG_PATH="${LOG_PATH:-"generated.log"}"
+SEND_TO="${SEND_TO:-"localhost:9000"}"
+
+exec socat -dd "OPEN:$LOG_PATH" "TCP:$SEND_TO"

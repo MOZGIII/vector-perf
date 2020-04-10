@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+VECTOR_PATH="${1:-"../vector/target/release/vector"}"
+exec "$VECTOR_PATH" --config vector.toml
