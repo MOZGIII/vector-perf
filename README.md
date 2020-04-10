@@ -11,3 +11,4 @@ A small perf issue investigation toolkit for Vector.
 - vector
 - perf (if needed)
 - vtune (if needed)
+- inferno (if needed, for flamegraph generation)
