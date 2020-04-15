@@ -7,4 +7,7 @@ if [[ -z "$VECTOR_PID" ]]; then
   exit 1
 fi
 
-exec perf record --call-graph dwarf -p "$VECTOR_PID" bin/start-socat
+exec perf record \
+  --call-graph dwarf \
+  -p "$VECTOR_PID" \
+  bin/start-socat
