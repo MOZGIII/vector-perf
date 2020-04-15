@@ -1,0 +1,18 @@
+#!/bin/bash
+set -xeuo pipefail
+
+VTUNE_BIN="${VTUNE_BIN:-"vtune"}"
+RESULT_DIR="resultdir"
+
+"$VTUNE_BIN" \
+  -r "$RESULT_DIR" \
+  -R top-down \
+  -call-stack-mode all \
+  -column "CPU Time:Self,Module" \
+  -report-out result.csv \
+  -filter "Function Stack" \
+  -format csv \
+  -csv-delimiter comma
+
+inferno-collapse-vtune result.csv > stacks.folded
+inferno-flamegraph > flamegraph.svg < stacks.folded

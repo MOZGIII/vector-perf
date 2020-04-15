@@ -2,11 +2,20 @@
 set -euo pipefail
 
 VTUNE_BIN="${VTUNE_BIN:-"vtune"}"
+RESULT_DIR="resultdir"
 
-"$VTUNE_BIN" -collect hotspots -knob sampling-mode=hw --target-process vector &
-VTUNE_PID="$!"
+if [[ -d "$RESULT_DIR" ]]; then
+  mv -f "$RESULT_DIR" "$RESULT_DIR.old"
+fi
+
+"$VTUNE_BIN" \
+  -collect hotspots \
+  -knob sampling-mode=hw \
+  -r "$RESULT_DIR" \
+  --target-process vector &
 
 bin/start-socat
 
-kill -2 "$VTUNE_PID"
-wait "$VTUNE_PID"
+"$VTUNE_BIN" \
+  -r "$RESULT_DIR" \
+  -command stop

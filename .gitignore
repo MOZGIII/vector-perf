@@ -7,8 +7,10 @@ perf.data
 perf.data.*
 
 # vtune data dirs
-/r*hs
+/resultdir
+/resultdir.*
 
 # artifacts
 *.svg
 *.folded
+*.csv
