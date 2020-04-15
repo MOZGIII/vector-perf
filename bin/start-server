@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euo pipefail
 
-exec go run server/main.go
+exec go run server/main.go | tee server.log
