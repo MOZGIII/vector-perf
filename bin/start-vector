@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-VECTOR_PATH="${1:-"../vector/target/release/vector"}"
-CONFIG="${2:-"configs/1.toml"}"
-exec "$VECTOR_PATH" --config "$CONFIG"
+VECTOR_PATH="${1:-"${VECTOR_PATH:-"../vector/target/release/vector"}"}"
+CONFIG_PATH="${2:-"${CONFIG_PATH:-"configs/1.toml"}"}"
+exec "$VECTOR_PATH" --config "$CONFIG_PATH"
