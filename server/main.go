@@ -44,7 +44,7 @@ func main() {
 	if addr == "" {
 		addr = ":9001"
 	}
-	fmt.Printf("Listening at %s\n", addr)
+	fmt.Fprintf(os.Stderr, "Listening at %s\n", addr)
 	go printStats()
 	if err := http.ListenAndServe(addr, http.HandlerFunc(handle)); err != nil {
 		panic(err)
