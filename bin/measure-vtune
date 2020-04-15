@@ -5,7 +5,8 @@ VTUNE_BIN="${VTUNE_BIN:-"vtune"}"
 RESULT_DIR="resultdir"
 
 if [[ -d "$RESULT_DIR" ]]; then
-  mv -f "$RESULT_DIR" "$RESULT_DIR.old"
+  rm -rf "$RESULT_DIR.old"
+  mv -f -T "$RESULT_DIR" "$RESULT_DIR.old"
 fi
 
 "$VTUNE_BIN" \
