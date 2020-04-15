@@ -1,0 +1,28 @@
+[sources.in]
+type = "socket"
+mode = "tcp"
+address = "0.0.0.0:9000"
+
+[sinks.out]
+type = "http"
+inputs = ["in"]
+uri = "http://localhost:9001/endpoint"
+healthcheck_uri = "http://localhost:9001/_health"
+encoding.codec = "text" # required
+headers.X-Powered-By = "Vector" # example
+
+# Batch
+batch.max_size = 1049000 # optional, default, bytes
+batch.timeout_secs = 1 # optional, default, seconds
+
+# Buffer
+# buffer.type = "memory" # optional, default
+# buffer.max_events = 500 # optional, default, events, relevant when type = "memory"
+# buffer.max_size = 104900000 # required, bytes, required when type = "disk"
+# buffer.when_full = "block" # optional, default
+
+# Request
+request.in_flight_limit = 10 # optional, default, requests
+request.rate_limit_duration_secs = 1 # optional, default, seconds
+request.rate_limit_num = 1000 # optional, default
+request.timeout_secs = 30 # optional, default, seconds

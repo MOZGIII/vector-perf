@@ -2,4 +2,5 @@
 set -euo pipefail
 
 VECTOR_PATH="${1:-"../vector/target/release/vector"}"
-exec "$VECTOR_PATH" --config vector.toml
+CONFIG="${2:-"configs/1.toml"}"
+exec "$VECTOR_PATH" --config "$CONFIG"
