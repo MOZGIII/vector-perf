@@ -1,4 +1,4 @@
 #!/bin/bash
 set -xeuo pipefail
-perf script | inferno-collapse-perf > stacks.folded
+perf script --no-inline | inferno-collapse-perf > stacks.folded
 inferno-flamegraph > flamegraph.svg < stacks.folded
